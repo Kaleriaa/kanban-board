@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import debounce from 'lodash.debounce'
-import { selectItemProps } from '../../modules/cards-list/helpers/selectToDo'
+import { selectItemProps } from '../../modules/cards-list/helpers/selectors'
 import { COLORS } from '../../style/color'
 import { appear, CloseButton, Cover, TextArea } from '../../ui'
 import { ModalState } from './type'
