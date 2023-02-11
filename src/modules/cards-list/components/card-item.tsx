@@ -6,10 +6,21 @@ import { AddButton } from '../../../components/card-button'
 import { TextArea } from '../../../ui'
 import { addCard } from '../slice'
 import { CardState } from './type'
+import { useDrop } from 'react-dnd/dist/hooks'
+import { DropTargetMonitor } from 'react-dnd/dist/types'
 
 export const CardItem: React.FC<CardState> = (props) => {
     const [active, setActive] = React.useState<boolean>(false)
     const textAreaRef = React.useRef<HTMLTextAreaElement | null>(null)
+
+    const [_, drop] = useDrop({
+        accept: 'Task',
+        drop: () => ({ name: props.id }),
+        collect: (monitor: DropTargetMonitor) => ({
+            isOver: monitor.isOver(),
+            canDrop: monitor.canDrop(),
+        }),
+    })
 
     const dispatch = useDispatch()
 
@@ -31,7 +42,7 @@ export const CardItem: React.FC<CardState> = (props) => {
     }
 
     return (
-        <CardBlock>
+        <CardBlock ref={drop}>
             <Title>{props.title}</Title>
             {props.children}
             {active && (

@@ -28,8 +28,11 @@ const SearchPanel = styled.input`
     background: var(${COLORS.grey.light});
     border-radius: 5px;
     border: none;
+    transition: all 0.4s;
     &:focus {
         outline: none;
+        width: 300px;
+        background: #fff;
     }
 `
 const SearchIcon = styled.span`

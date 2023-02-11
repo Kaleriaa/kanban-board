@@ -5,11 +5,27 @@ import { Modal } from '../../../components'
 import { Cover } from '../../../ui'
 import { Card } from '../../../@types'
 import { ColorToDo } from './type'
-import { addText, deleteCard } from '../slice'
+import { addText, deleteCard, dropCard } from '../slice'
+import { DragSourceHookSpec, useDrag } from 'react-dnd/dist/hooks'
+import { DragSourceMonitor } from 'react-dnd/dist/types'
 
 export const ToDoCard: React.FC<Card & ColorToDo> = (props) => {
     const [visible, setVisible] = React.useState<boolean>(false)
     const dispatch = useDispatch()
+
+    const [_, drag] = useDrag({
+        type: 'Task',
+        item: { id: props.item },
+        end: (item: { id: string }, monitor: DragSourceMonitor) => {
+            const dropResult = monitor.getDropResult<{ name: string }>()
+            if (dropResult) {
+                dispatch(dropCard({ id: item.id, column: dropResult.name }))
+            }
+        },
+        collect: (monitor: DragSourceMonitor) => ({
+            isDragging: monitor.isDragging(),
+        }),
+    })
 
     const onCloseModal = () => {
         setVisible(false)
@@ -22,7 +38,7 @@ export const ToDoCard: React.FC<Card & ColorToDo> = (props) => {
     }
 
     return (
-        <CardBlock>
+        <CardBlock ref={drag}>
             <Cover color={props.color} height="32px" />
             <Title onClick={() => setVisible(true)}>{props.title}</Title>
             {visible ? (
