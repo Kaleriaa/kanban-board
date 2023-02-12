@@ -29,12 +29,14 @@ export const CardItem: React.FC<CardState> = (props) => {
     }
     const onAddCard = () => {
         setActive(true)
+        const now = new Date().toLocaleString('ru-RU', { dateStyle: 'long' })
         if (textAreaRef.current) {
             dispatch(
                 addCard({
                     id: props.id,
                     title: textAreaRef.current?.value,
                     item: nanoid(),
+                    date: now,
                 }),
             )
             setActive(false)

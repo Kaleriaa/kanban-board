@@ -32,7 +32,7 @@ export const cardSlice = createSlice({
                 state.list.push(updatedCard)
             }
         },
-        dropCard: (state, action) => {
+        dropCard: (state, action: PayloadAction<Record<string, string>>) => {
             const foundedCard = state.list.find(
                 (card) => card.item === action.payload.id,
             )

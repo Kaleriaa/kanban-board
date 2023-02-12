@@ -17,15 +17,13 @@
     "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
-    "styled-components": "^5.3.6",
-    "styled-theming": "^2.2.0"
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
     "@types/lodash.debounce": "^4.0.7",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.9",
     "@types/styled-components": "^5.1.26",
-    "@types/styled-theming": "^2.2.5",
     "@vitejs/plugin-react": "^3.0.0",
     "typescript": "^4.9.3",
     "vite": "^4.0.0"

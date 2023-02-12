@@ -14,7 +14,7 @@ export const AddButton: React.FC<ButtonState> = ({
             <Button className={active ? 'active' : ''} onClick={onAddButton}>
                 + Добавить карточку
             </Button>
-            {active ? <CloseButton onClose={onClose} /> : null}
+            {active && <CloseButton onClose={onClose} />}
         </ButtonWrapper>
     )
 }

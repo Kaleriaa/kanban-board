@@ -6,7 +6,7 @@ import { Cover } from '../../../ui'
 import { Card } from '../../../@types'
 import { ColorToDo } from './type'
 import { addText, deleteCard, dropCard } from '../slice'
-import { DragSourceHookSpec, useDrag } from 'react-dnd/dist/hooks'
+import { useDrag } from 'react-dnd/dist/hooks'
 import { DragSourceMonitor } from 'react-dnd/dist/types'
 
 export const ToDoCard: React.FC<Card & ColorToDo> = (props) => {
@@ -16,6 +16,7 @@ export const ToDoCard: React.FC<Card & ColorToDo> = (props) => {
     const [_, drag] = useDrag({
         type: 'Task',
         item: { id: props.item },
+        canDrag: !visible,
         end: (item: { id: string }, monitor: DragSourceMonitor) => {
             const dropResult = monitor.getDropResult<{ name: string }>()
             if (dropResult) {

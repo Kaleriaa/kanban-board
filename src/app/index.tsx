@@ -23,6 +23,7 @@ export const App: React.FC = () => {
         </Container>
     )
 }
+
 const Container = styled.div<{ bg: string }>`
     width: 100vw;
     height: 100vh;

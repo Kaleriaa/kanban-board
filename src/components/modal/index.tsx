@@ -1,6 +1,5 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
-import debounce from 'lodash.debounce'
 import { selectItemProps } from '../../modules/cards-list/helpers/selectors'
 import { COLORS } from '../../style/color'
 import { appear, CloseButton, Cover, TextArea } from '../../ui'
@@ -30,6 +29,7 @@ export const Modal: React.FC<ModalState> = (props) => {
                     <Title>{currentCard?.title}</Title>
                     <CloseButton onClose={props.onClick} />
                 </TopWrapper>
+                <Date>Создано {currentCard?.date}</Date>
                 <Wrapper>
                     {!active ? (
                         <Description>{currentCard?.text}</Description>
@@ -113,7 +113,7 @@ const Wrapper = styled.div`
 `
 const TopWrapper = styled(Wrapper)`
     margin-top: 90px;
-    margin-bottom: 40px;
+    margin-bottom: 15px;
 `
 const Title = styled.div`
     font-weight: 700;
@@ -137,6 +137,13 @@ const Icon = styled.div`
             color: #ab9574;
         }
     }
+`
+const Date = styled.div`
+    font-size: 13px;
+    font-weight: 500;
+    color: grey;
+    margin-left: 50px;
+    margin-bottom: 15px;
 `
 const Description = styled.div`
     width: 100%;
