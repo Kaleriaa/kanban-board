@@ -9,7 +9,6 @@ import { searchTasks } from './slice'
 export const AppHeader = React.memo(() => {
     const [theme, setTheme] = React.useState<boolean>(false)
     const [search, setSearch] = React.useState<string>('')
-    const inputRef = React.useRef<HTMLInputElement | null>(null)
     const dispatch = useDispatch()
 
     const onChangeValue = (req: string) => {
@@ -23,7 +22,7 @@ export const AppHeader = React.memo(() => {
 
     return (
         <Header>
-            <Search ref={inputRef} value={search} getValue={onChangeValue} />
+            <Search value={search} getValue={onChangeValue} />
             <Settings onClick={() => setTheme((prev) => !prev)}>
                 <i className="fa fa-cog" aria-hidden="true" />
             </Settings>

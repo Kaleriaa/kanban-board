@@ -11,8 +11,8 @@ import { selectSearch, selectToDo } from './helpers/selectors'
 export const CardsList = React.memo(() => {
     const resultTasks = useSelector(selectSearch)
     return (
-        <DndProvider backend={HTML5Backend}>
-            <Wrapper>
+        <Wrapper>
+            <DndProvider backend={HTML5Backend}>
                 {cardLabels.map(({ id, title }, i) => {
                     const toDo = selectToDo(id, resultTasks)
                     return (
@@ -27,8 +27,8 @@ export const CardsList = React.memo(() => {
                         </CardItem>
                     )
                 })}
-            </Wrapper>
-        </DndProvider>
+            </DndProvider>
+        </Wrapper>
     )
 })
 
@@ -36,8 +36,8 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    width: 100%;
-    height: fit-content;
+    height: calc(100vh - 75px);
+    overflow: auto;
     padding: 40px;
     margin-top: 10px;
 `

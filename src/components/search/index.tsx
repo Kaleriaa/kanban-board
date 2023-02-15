@@ -3,22 +3,19 @@ import styled from 'styled-components'
 import { COLORS } from '../../style/color'
 import { SearchState } from './type'
 
-export const Search = React.forwardRef<HTMLInputElement, SearchState>(
-    (props, ref) => {
-        return (
-            <Wrapper>
-                <SearchIcon>
-                    <i className="fa fa-search" aria-hidden="true"></i>
-                </SearchIcon>
-                <SearchPanel
-                    ref={ref}
-                    value={props.value}
-                    onChange={(e) => props.getValue(e.target.value)}
-                />
-            </Wrapper>
-        )
-    },
-)
+export const Search: React.FC<SearchState> = (props) => {
+    return (
+        <Wrapper>
+            <SearchIcon>
+                <i className="fa fa-search" aria-hidden="true"></i>
+            </SearchIcon>
+            <SearchPanel
+                value={props.value}
+                onChange={(e) => props.getValue(e.target.value)}
+            />
+        </Wrapper>
+    )
+}
 
 const SearchPanel = styled.input`
     width: 270px;

@@ -11,9 +11,9 @@ export const cardLabels: CardPropsType[] = [
 
 export const coverColor: string[] = [
     '#D69960',
-    '#60D6BA',
     '#A960D6',
     '#D660A0',
+    '#60D6BA',
     '#9BD660',
     '#9DB6D4',
 ]

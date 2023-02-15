@@ -8,7 +8,7 @@ import { appear } from './appear-animate'
 type FormType = {
     getValue?: (value: string) => void
     rows: number
-    value: string | undefined
+    value?: string
 }
 
 export const TextArea = React.forwardRef<HTMLTextAreaElement, FormType>(

@@ -2,12 +2,32 @@ import React from 'react'
 import styled from 'styled-components'
 import { widgets } from './constants/colors-widget'
 import { Colors, appear } from '../../ui'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../redux/store'
+import { changeTheme } from '../../modules/header/slice'
 
 export const ColorTheme: React.FC = () => {
+    const dispatch = useDispatch()
+
+    const currentColor = useSelector(
+        (state: RootState) => state.headerSlice.themeColor,
+    )
+    const onChangeColor = (color: string) => {
+        localStorage.setItem('theme', color)
+        dispatch(changeTheme(color))
+    }
+
     return (
         <ColorWidget>
             {widgets.map((item) => {
-                return <Colors key={item} color={item} />
+                return (
+                    <Colors
+                        key={item}
+                        currentColor={currentColor}
+                        onChangeTheme={onChangeColor}
+                        color={item}
+                    />
+                )
             })}
         </ColorWidget>
     )
